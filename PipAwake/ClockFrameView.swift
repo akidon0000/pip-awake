@@ -12,7 +12,7 @@ struct ClockFrameView: View {
             .foregroundStyle(.white)
             .lineLimit(1)
             .minimumScaleFactor(0.4)
-            .padding(.horizontal, ClockFrameStyle.horizontalPadding)
+            .padding(.horizontal, style.horizontalPadding)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.black)
     }

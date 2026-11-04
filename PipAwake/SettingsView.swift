@@ -9,7 +9,6 @@ struct SettingsView: View {
                 Section {
                     heightRow
                     widthRow
-                    fillScreenWidthRow
                     Button("初期値に戻す") {
                         settings.resetSize()
                     }
@@ -21,6 +20,10 @@ struct SettingsView: View {
             }
             .navigationTitle("設定")
         }
+    }
+
+    private var heightRange: ClosedRange<Double> {
+        Double(AppSettings.heightRange.lowerBound)...Double(AppSettings.heightRange.upperBound)
     }
 
     private var heightRow: some View {
@@ -36,10 +39,6 @@ struct SettingsView: View {
         }
     }
 
-    private var heightRange: ClosedRange<Double> {
-        Double(AppSettings.heightRange.lowerBound)...Double(AppSettings.heightRange.upperBound)
-    }
-
     private var widthRow: some View {
         VStack(alignment: .leading) {
             LabeledContent("横幅", value: "\(settings.effectiveWidth) px")
@@ -51,26 +50,6 @@ struct SettingsView: View {
             .accessibilityLabel("横幅")
             .accessibilityValue("\(settings.effectiveWidth) ピクセル")
         }
-        .disabled(settings.fillsScreenWidth)
-    }
-
-    /// チェックを入れると、横幅は画面の横幅に合わせる
-    private var fillScreenWidthRow: some View {
-        Button {
-            settings.fillsScreenWidth.toggle()
-        } label: {
-            HStack {
-                Image(systemName: settings.fillsScreenWidth ? "checkmark.square.fill" : "square")
-                    .foregroundStyle(
-                        settings.fillsScreenWidth ? Color.accentColor : Color.secondary
-                    )
-                Text("横幅を画面いっぱいにする")
-                Spacer()
-            }
-        }
-        .buttonStyle(.plain)
-        .accessibilityAddTraits(.isToggle)
-        .accessibilityValue(settings.fillsScreenWidth ? "オン" : "オフ")
     }
 
     private var heightBinding: Binding<Double> {

@@ -19,4 +19,10 @@ struct ClockFrameStyleTests {
         let style = ClockFrameStyle(width: 1280, height: 30)
         #expect(style.elapsedFontSize == 30 * 0.68)
     }
+
+    @Test
+    func narrowWidthUsesSmallerPadding() {
+        #expect(ClockFrameStyle(width: 50, height: 50).horizontalPadding == 5)
+        #expect(ClockFrameStyle.standard.horizontalPadding == 24)
+    }
 }

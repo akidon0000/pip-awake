@@ -27,6 +27,15 @@ struct ClockFrameRendererTests {
     }
 
     @Test
+    func rendersNarrowestWidthOf50() throws {
+        let style = ClockFrameStyle(width: 50, height: 30)
+        let rendered = ClockFrameRenderer().render(frame, style: style)
+        let buffer = try #require(rendered)
+        #expect(CVPixelBufferGetWidth(buffer) == 50)
+        #expect(CVPixelBufferGetHeight(buffer) == 30)
+    }
+
+    @Test
     func drawsLightTextOnBlackBackground() throws {
         let rendered = ClockFrameRenderer().render(frame, style: .standard)
         let buffer = try #require(rendered)
