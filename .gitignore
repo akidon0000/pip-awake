@@ -110,7 +110,6 @@ Temporary Items
 # エージェントの作業メモ（ローカル専用）
 /.serena/
 
-# Web（Swift Ignite）の生成物と、CI で作る ipa
+# Web（Swift Ignite）の生成物
 Web/.build/
 Web/Build/
-Web/Assets/*.ipa

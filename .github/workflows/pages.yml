@@ -20,9 +20,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build unsigned ipa into the site assets
-        run: scripts/build-unsigned-ipa.sh Web/Assets
-
       - name: Build the Ignite site
         working-directory: Web
         run: swift run PipAwakeWeb

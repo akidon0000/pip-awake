@@ -8,8 +8,8 @@ struct HomePage: StaticPage {
             Text("PiP Awake")
                 .font(.title1)
             Text("iPhone の画面を点けたままにするための iOS アプリです。PiP で経過時間の映像を再生し続けます。")
-            Text("ipa は未署名です。Sideloadly や AltStore で、自分の Apple ID を使ってインストールしてください。")
-            Link("PipAwake.ipa をダウンロード", target: "PipAwake.ipa")
+            Text("このアプリは ipa では配布していません。ソースを取得して Xcode でビルドし、自分の iPhone に入れてください。")
+            Link("ソースとインストール手順（GitHub）", target: "https://github.com/akidon0000/pip-awake")
                 .linkStyle(.button)
         }
         .padding(.vertical, 40)

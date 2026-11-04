@@ -66,13 +66,12 @@ xcodebuild test -project PipAwake.xcodeproj -scheme PipAwake \
 | `PipAwake/` | iOS アプリのソース |
 | `PipAwakeTests/` | 単体テスト |
 | `Web/` | 公開サイト（[Swift Ignite](https://github.com/twostraws/Ignite)） |
-| `scripts/` | 未署名 ipa のビルドスクリプト |
 | `docs/` | 設計 spec と実装計画 |
 | `project.yml` | XcodeGen の定義。`PipAwake.xcodeproj` はここから生成する |
 
 ## 公開サイト（Web/）
 
-`main` に push すると `.github/workflows/pages.yml` が動きます。未署名の ipa を作り、サイトと一緒に GitHub Pages へ公開します。
+`main` に push すると `.github/workflows/pages.yml` が動き、サイトを GitHub Pages へ公開します。サイトには ipa を置いていません。
 
 ローカルでサイトを作る場合:
 
