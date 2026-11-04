@@ -2,7 +2,7 @@
 
 - 読み手: このリポジトリで実装する自分・エージェント
 - 目的: 作るものの範囲・構成・状態遷移を固定し、実装計画（plans/）の根拠にする
-- 状態: 2026-11-04 起票。チャットで方式と設計の合意済み。2026-11-05 改訂: PiP 窓を経過時間と給電状況だけの 640×180 表示に変更（ユーザー指示）
+- 状態: 2026-11-04 起票。チャットで方式と設計の合意済み。2026-11-05 改訂: PiP 窓を経過時間と給電状況だけの 640×180 表示に変更（ユーザー指示）。2026-11-04 改訂 2: 高さを 50 に縮め、経過時間と給電状況を HStack で横一列にした（ユーザー指示）
 
 ## 何を作るか
 
@@ -54,7 +54,7 @@ MDM の自動ロックは会社のセキュリティポリシーなので、使�
 | 部品 | 役割 | 依存 |
 |---|---|---|
 | `ElapsedFormatter` | 経過秒を `H:MM:SS` に整形する純関数 | なし |
-| `ClockFrameRenderer` | 経過時間・給電状態から 640×180 の BGRA `CVPixelBuffer` を作る。副作用なし | CoreGraphics / CoreVideo |
+| `ClockFrameRenderer` | 経過時間・給電状態から 640×50 の BGRA `CVPixelBuffer` を作る。SwiftUI の `ClockFrameView`（HStack）を `ImageRenderer` で画像にして流し込む。副作用なし | SwiftUI / CoreVideo |
 | `ClockSampleBufferFeeder` | `AVSampleBufferDisplayLayer` と制御用タイムベースを持ち、1 秒ごとに renderer の出力を `CMSampleBuffer` にして enqueue。`start` / `pause` / `stop` | renderer |
 | `PiPController` | `AVPictureInPictureController(contentSource: .init(sampleBufferDisplayLayer:playbackDelegate:))` の開始・停止と delegate の中継 | feeder のレイヤー |
 | `PowerMonitor` | `UIDevice.batteryState` を監視し、給電中（`.charging` か `.full`）かを流す。シミュレータでは常に給電中 | UIKit |

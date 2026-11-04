@@ -4,20 +4,23 @@ import Testing
 
 @testable import PipAwake
 
+@MainActor
 struct ClockFrameRendererTests {
     private let frame = ClockFrame(elapsed: 3725, isPluggedIn: true)
 
     @Test
-    func rendersBGRA640x180() throws {
-        let buffer = try #require(ClockFrameRenderer().render(frame))
+    func rendersBGRA640x50() throws {
+        let rendered = ClockFrameRenderer().render(frame)
+        let buffer = try #require(rendered)
         #expect(CVPixelBufferGetWidth(buffer) == 640)
-        #expect(CVPixelBufferGetHeight(buffer) == 180)
+        #expect(CVPixelBufferGetHeight(buffer) == 50)
         #expect(CVPixelBufferGetPixelFormatType(buffer) == kCVPixelFormatType_32BGRA)
     }
 
     @Test
     func drawsLightTextOnBlackBackground() throws {
-        let buffer = try #require(ClockFrameRenderer().render(frame))
+        let rendered = ClockFrameRenderer().render(frame)
+        let buffer = try #require(rendered)
         CVPixelBufferLockBaseAddress(buffer, .readOnly)
         defer { CVPixelBufferUnlockBaseAddress(buffer, .readOnly) }
         let base = try #require(CVPixelBufferGetBaseAddress(buffer))
