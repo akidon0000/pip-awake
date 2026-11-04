@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DF4043356AA999D199B35A8 /* ClockSampleBufferFeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */; };
 		2F0703F459B30693C825F607 /* ClockFrameRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */; };
+		44E2E81890FBD2ACEB6F6E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB63AA08209DB6362061DB0 /* Assets.xcassets */; };
 		4B851B4AD9E77D11630F4BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B5C5566D6034E783AEFB2 /* ContentView.swift */; };
 		4C36DF34F25A8E745F9A80FC /* PiPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5907F47C96C4AD4010DB31 /* PiPController.swift */; };
 		4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */; };
@@ -41,6 +42,7 @@
 		7009801003027307701B3EFF /* SampleBufferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactory.swift; sourceTree = "<group>"; };
 		791CC144DFC5BC7FB3FC8EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatter.swift; sourceTree = "<group>"; };
+		8BB63AA08209DB6362061DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSampleBufferFeeder.swift; sourceTree = "<group>"; };
 		9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatterTests.swift; sourceTree = "<group>"; };
 		9E5907F47C96C4AD4010DB31 /* PiPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		10C3DC6025A38FE9FBB56798 /* PipAwake */ = {
 			isa = PBXGroup;
 			children = (
+				8BB63AA08209DB6362061DB0 /* Assets.xcassets */,
 				220ED6924DB7D2B3DF030C98 /* AudioSessionController.swift */,
 				15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */,
 				9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */,
@@ -127,6 +130,7 @@
 			buildConfigurationList = 1BC2BE98AA6520F4564BEEEA /* Build configuration list for PBXNativeTarget "PipAwake" */;
 			buildPhases = (
 				AC900760A646969D2CDA7563 /* Sources */,
+				5F593151CB752D72639D2457 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -177,6 +181,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5F593151CB752D72639D2457 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44E2E81890FBD2ACEB6F6E9B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		39FA65849F649B9E180B596D /* Sources */ = {
