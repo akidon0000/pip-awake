@@ -18,6 +18,7 @@ struct AppSettingsTests {
         let settings = AppSettings(defaults: try makeDefaults())
         #expect(settings.frameHeight == ClockFrameStyle.standard.height)
         #expect(settings.frameWidth == ClockFrameStyle.standard.width)
+        #expect(!settings.fillsScreenWidth)
     }
 
     @Test
@@ -26,10 +27,12 @@ struct AppSettingsTests {
         let first = AppSettings(defaults: defaults)
         first.frameHeight = 90
         first.frameWidth = 800
+        first.fillsScreenWidth = true
 
         let second = AppSettings(defaults: defaults)
         #expect(second.frameHeight == 90)
         #expect(second.frameWidth == 800)
+        #expect(second.fillsScreenWidth)
     }
 
     @Test
@@ -40,7 +43,7 @@ struct AppSettingsTests {
 
         let settings = AppSettings(defaults: defaults)
         #expect(settings.frameHeight == AppSettings.heightRange.upperBound)
-        #expect(settings.frameWidth == AppSettings.widthRange.lowerBound)
+        #expect(settings.effectiveWidth == AppSettings.minimumWidth)
     }
 
     @Test
@@ -48,10 +51,12 @@ struct AppSettingsTests {
         let settings = AppSettings(defaults: try makeDefaults())
         settings.frameHeight = 120
         settings.frameWidth = 1000
+        settings.fillsScreenWidth = true
 
         settings.resetSize()
         #expect(settings.frameHeight == ClockFrameStyle.standard.height)
         #expect(settings.frameWidth == ClockFrameStyle.standard.width)
+        #expect(!settings.fillsScreenWidth)
     }
 
     @Test
@@ -61,5 +66,26 @@ struct AppSettingsTests {
         settings.frameHeight = 60
 
         #expect(settings.frameStyle == ClockFrameStyle(width: 480, height: 60))
+    }
+
+    @Test
+    func widthUpperBoundFollowsScreenWidth() throws {
+        let settings = AppSettings(defaults: try makeDefaults())
+        settings.screenWidthPixels = 1206
+        #expect(settings.widthRange.upperBound == 1206)
+
+        settings.frameWidth = 1500
+        #expect(settings.effectiveWidth == 1206)
+    }
+
+    @Test
+    func fillsScreenWidthUsesScreenWidth() throws {
+        let settings = AppSettings(defaults: try makeDefaults())
+        settings.screenWidthPixels = 1179
+        settings.frameWidth = 500
+        settings.fillsScreenWidth = true
+
+        #expect(settings.effectiveWidth == 1179)
+        #expect(settings.frameStyle.width == 1179)
     }
 }

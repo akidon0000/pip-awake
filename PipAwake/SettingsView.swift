@@ -6,35 +6,84 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                sizeSection
+                Section {
+                    heightRow
+                    widthRow
+                    fillScreenWidthRow
+                    Button("初期値に戻す") {
+                        settings.resetSize()
+                    }
+                } header: {
+                    Text("映像の大きさ")
+                } footer: {
+                    Text("横幅と高さの比率が PiP 窓の形になります。変更は次に開始したときから反映されます。")
+                }
             }
             .navigationTitle("設定")
         }
     }
 
-    private var sizeSection: some View {
-        Section {
-            Stepper(
-                value: $settings.frameHeight,
-                in: AppSettings.heightRange,
-                step: AppSettings.heightStep
-            ) {
-                LabeledContent("高さ", value: "\(settings.frameHeight) px")
-            }
-            Stepper(
-                value: $settings.frameWidth,
-                in: AppSettings.widthRange,
-                step: AppSettings.widthStep
-            ) {
-                LabeledContent("横幅", value: "\(settings.frameWidth) px")
-            }
-            Button("初期値に戻す") {
-                settings.resetSize()
-            }
-        } header: {
-            Text("映像の大きさ")
-        } footer: {
-            Text("横幅と高さの比率が PiP 窓の形になります。変更は次に開始したときから反映されます。")
+    private var heightRow: some View {
+        VStack(alignment: .leading) {
+            LabeledContent("高さ", value: "\(settings.frameHeight) px")
+            Slider(
+                value: heightBinding,
+                in: heightRange,
+                step: 1
+            )
+            .accessibilityLabel("高さ")
+            .accessibilityValue("\(settings.frameHeight) ピクセル")
         }
+    }
+
+    private var heightRange: ClosedRange<Double> {
+        Double(AppSettings.heightRange.lowerBound)...Double(AppSettings.heightRange.upperBound)
+    }
+
+    private var widthRow: some View {
+        VStack(alignment: .leading) {
+            LabeledContent("横幅", value: "\(settings.effectiveWidth) px")
+            Slider(
+                value: widthBinding,
+                in: Double(settings.widthRange.lowerBound)...Double(settings.widthRange.upperBound),
+                step: 1
+            )
+            .accessibilityLabel("横幅")
+            .accessibilityValue("\(settings.effectiveWidth) ピクセル")
+        }
+        .disabled(settings.fillsScreenWidth)
+    }
+
+    /// チェックを入れると、横幅は画面の横幅に合わせる
+    private var fillScreenWidthRow: some View {
+        Button {
+            settings.fillsScreenWidth.toggle()
+        } label: {
+            HStack {
+                Image(systemName: settings.fillsScreenWidth ? "checkmark.square.fill" : "square")
+                    .foregroundStyle(
+                        settings.fillsScreenWidth ? Color.accentColor : Color.secondary
+                    )
+                Text("横幅を画面いっぱいにする")
+                Spacer()
+            }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(.isToggle)
+        .accessibilityValue(settings.fillsScreenWidth ? "オン" : "オフ")
+    }
+
+    private var heightBinding: Binding<Double> {
+        Binding(
+            get: { Double(settings.frameHeight) },
+            set: { settings.frameHeight = Int($0.rounded()) }
+        )
+    }
+
+    private var widthBinding: Binding<Double> {
+        Binding(
+            get: { Double(settings.effectiveWidth) },
+            set: { settings.frameWidth = Int($0.rounded()) }
+        )
     }
 }
