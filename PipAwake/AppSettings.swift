@@ -6,61 +6,55 @@ import Observation
 @Observable
 final class AppSettings {
     static let heightRange = 30...150
-    static let minimumWidth = 50
-    /// 画面の横幅がまだ分からないときに使う、横幅の上限
-    static let fallbackMaximumWidth = 1280
+    /// 横幅 ÷ 高さ。1（正方形）から 16（横長）まで
+    static let ratioRange = 1.0...16.0
+    static let defaultRatio =
+        Double(ClockFrameStyle.standard.width)
+        / Double(ClockFrameStyle.standard.height)
 
     var frameHeight: Int {
         didSet { defaults.set(frameHeight, forKey: Key.frameHeight) }
     }
 
-    var frameWidth: Int {
-        didSet { defaults.set(frameWidth, forKey: Key.frameWidth) }
+    /// 横幅 ÷ 高さ。PiP 窓の形はこの比率で決まる
+    var frameRatio: Double {
+        didSet { defaults.set(frameRatio, forKey: Key.frameRatio) }
     }
-
-    /// 画面の横幅（ピクセル）。RootView が起動後に測って入れる。保存はしない
-    var screenWidthPixels = AppSettings.fallbackMaximumWidth
 
     private let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
-        let standard = ClockFrameStyle.standard
         frameHeight = Self.clamp(
-            defaults.object(forKey: Key.frameHeight) as? Int ?? standard.height,
+            defaults.object(forKey: Key.frameHeight) as? Int ?? ClockFrameStyle.standard.height,
             to: Self.heightRange
         )
-        frameWidth = Self.clamp(
-            defaults.object(forKey: Key.frameWidth) as? Int ?? standard.width,
-            to: Self.minimumWidth...Self.fallbackMaximumWidth
+        frameRatio = Self.clamp(
+            defaults.object(forKey: Key.frameRatio) as? Double ?? Self.defaultRatio,
+            to: Self.ratioRange
         )
     }
 
-    /// 横幅を選べる範囲。下限は 50px、上限は画面の横幅
-    var widthRange: ClosedRange<Int> {
-        Self.minimumWidth...max(Self.minimumWidth, screenWidthPixels)
-    }
-
-    /// 実際に使う横幅
-    var effectiveWidth: Int {
-        Self.clamp(frameWidth, to: widthRange)
+    /// 横幅。高さと比率から決まる
+    var frameWidth: Int {
+        Int((Double(frameHeight) * frameRatio).rounded())
     }
 
     var frameStyle: ClockFrameStyle {
-        ClockFrameStyle(width: effectiveWidth, height: frameHeight)
+        ClockFrameStyle(width: frameWidth, height: frameHeight)
     }
 
     func resetSize() {
-        frameWidth = ClockFrameStyle.standard.width
         frameHeight = ClockFrameStyle.standard.height
+        frameRatio = Self.defaultRatio
     }
 
-    private static func clamp(_ value: Int, to range: ClosedRange<Int>) -> Int {
+    private static func clamp<T: Comparable>(_ value: T, to range: ClosedRange<T>) -> T {
         min(max(value, range.lowerBound), range.upperBound)
     }
 
     private enum Key {
         static let frameHeight = "frameHeight"
-        static let frameWidth = "frameWidth"
+        static let frameRatio = "frameRatio"
     }
 }

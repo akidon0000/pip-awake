@@ -14,7 +14,7 @@ struct AppSettingsTests {
     }
 
     @Test
-    func usesStandardValuesWhenNothingIsSaved() throws {
+    func usesStandardSizeWhenNothingIsSaved() throws {
         let settings = AppSettings(defaults: try makeDefaults())
         #expect(settings.frameHeight == ClockFrameStyle.standard.height)
         #expect(settings.frameWidth == ClockFrameStyle.standard.width)
@@ -25,39 +25,29 @@ struct AppSettingsTests {
         let defaults = try makeDefaults()
         let first = AppSettings(defaults: defaults)
         first.frameHeight = 90
-        first.frameWidth = 800
+        first.frameRatio = 4.5
 
         let second = AppSettings(defaults: defaults)
         #expect(second.frameHeight == 90)
-        #expect(second.frameWidth == 800)
+        #expect(second.frameRatio == 4.5)
     }
 
     @Test
     func clampsSavedValuesIntoAllowedRange() throws {
         let defaults = try makeDefaults()
         defaults.set(9_999, forKey: "frameHeight")
-        defaults.set(1, forKey: "frameWidth")
+        defaults.set(0.1, forKey: "frameRatio")
 
         let settings = AppSettings(defaults: defaults)
         #expect(settings.frameHeight == AppSettings.heightRange.upperBound)
-        #expect(settings.effectiveWidth == AppSettings.minimumWidth)
-    }
-
-    @Test
-    func acceptsNarrowestWidthOf50() throws {
-        let settings = AppSettings(defaults: try makeDefaults())
-        settings.frameWidth = 50
-
-        #expect(settings.widthRange.lowerBound == 50)
-        #expect(settings.effectiveWidth == 50)
-        #expect(settings.frameStyle.width == 50)
+        #expect(settings.frameRatio == AppSettings.ratioRange.lowerBound)
     }
 
     @Test
     func resetSizeRestoresStandardSize() throws {
         let settings = AppSettings(defaults: try makeDefaults())
         settings.frameHeight = 120
-        settings.frameWidth = 1000
+        settings.frameRatio = 3
 
         settings.resetSize()
         #expect(settings.frameHeight == ClockFrameStyle.standard.height)
@@ -65,21 +55,21 @@ struct AppSettingsTests {
     }
 
     @Test
-    func frameStyleReflectsCurrentValues() throws {
+    func widthIsDerivedFromHeightAndRatio() throws {
         let settings = AppSettings(defaults: try makeDefaults())
-        settings.frameWidth = 480
         settings.frameHeight = 60
+        settings.frameRatio = 8
 
+        #expect(settings.frameWidth == 480)
         #expect(settings.frameStyle == ClockFrameStyle(width: 480, height: 60))
     }
 
     @Test
-    func widthUpperBoundFollowsScreenWidth() throws {
+    func squareRatioGivesSameWidthAndHeight() throws {
         let settings = AppSettings(defaults: try makeDefaults())
-        settings.screenWidthPixels = 1206
-        #expect(settings.widthRange.upperBound == 1206)
+        settings.frameHeight = 30
+        settings.frameRatio = 1
 
-        settings.frameWidth = 1500
-        #expect(settings.effectiveWidth == 1206)
+        #expect(settings.frameStyle == ClockFrameStyle(width: 30, height: 30))
     }
 }
