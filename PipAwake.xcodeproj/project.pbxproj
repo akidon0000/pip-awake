@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */; };
-		C57B75F3A8735DCA59509918 /* SmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F9AA1479D8D246F8FC657E /* SmokeTests.swift */; };
+		752D96692193E92A6D1F1588 /* ClockTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */; };
+		A3B7F08A0CF7E3196947627C /* ClockText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD68EB84237F3291F1F792 /* ClockText.swift */; };
+		D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */; };
+		E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,10 +25,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTextTests.swift; sourceTree = "<group>"; };
 		5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipAwakeApp.swift; sourceTree = "<group>"; };
 		791CC144DFC5BC7FB3FC8EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatter.swift; sourceTree = "<group>"; };
+		9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatterTests.swift; sourceTree = "<group>"; };
+		D4FD68EB84237F3291F1F792 /* ClockText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockText.swift; sourceTree = "<group>"; };
 		D7FC9DE63437DDE146F96099 /* PipAwakeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PipAwakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8F9AA1479D8D246F8FC657E /* SmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmokeTests.swift; sourceTree = "<group>"; };
 		ECF90C63BCC32FC35E30E9B5 /* PipAwake.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PipAwake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -33,7 +39,8 @@
 		05F434D7A8D9601B79EEE351 /* PipAwakeTests */ = {
 			isa = PBXGroup;
 			children = (
-				E8F9AA1479D8D246F8FC657E /* SmokeTests.swift */,
+				49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */,
+				9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */,
 			);
 			path = PipAwakeTests;
 			sourceTree = "<group>";
@@ -41,6 +48,8 @@
 		10C3DC6025A38FE9FBB56798 /* PipAwake */ = {
 			isa = PBXGroup;
 			children = (
+				D4FD68EB84237F3291F1F792 /* ClockText.swift */,
+				7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */,
 				791CC144DFC5BC7FB3FC8EDA /* Info.plist */,
 				5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */,
 			);
@@ -147,7 +156,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C57B75F3A8735DCA59509918 /* SmokeTests.swift in Sources */,
+				752D96692193E92A6D1F1588 /* ClockTextTests.swift in Sources */,
+				E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +165,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3B7F08A0CF7E3196947627C /* ClockText.swift in Sources */,
+				D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */,
 				4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
