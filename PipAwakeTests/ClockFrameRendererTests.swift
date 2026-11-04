@@ -9,8 +9,8 @@ struct ClockFrameRendererTests {
     private let frame = ClockFrame(elapsed: 3725, isPluggedIn: true)
 
     @Test
-    func rendersBGRA640x50() throws {
-        let rendered = ClockFrameRenderer().render(frame)
+    func rendersBGRAWithStandardSize() throws {
+        let rendered = ClockFrameRenderer().render(frame, style: .standard)
         let buffer = try #require(rendered)
         #expect(CVPixelBufferGetWidth(buffer) == 640)
         #expect(CVPixelBufferGetHeight(buffer) == 50)
@@ -18,8 +18,17 @@ struct ClockFrameRendererTests {
     }
 
     @Test
+    func followsCustomWidthAndHeight() throws {
+        let style = ClockFrameStyle(width: 320, height: 120, showsPowerStatus: false)
+        let rendered = ClockFrameRenderer().render(frame, style: style)
+        let buffer = try #require(rendered)
+        #expect(CVPixelBufferGetWidth(buffer) == 320)
+        #expect(CVPixelBufferGetHeight(buffer) == 120)
+    }
+
+    @Test
     func drawsLightTextOnBlackBackground() throws {
-        let rendered = ClockFrameRenderer().render(frame)
+        let rendered = ClockFrameRenderer().render(frame, style: .standard)
         let buffer = try #require(rendered)
         CVPixelBufferLockBaseAddress(buffer, .readOnly)
         defer { CVPixelBufferUnlockBaseAddress(buffer, .readOnly) }

@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D6719E4D994A6B8E1AAF0BB /* AppSettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAD1EFCC968639709B53367 /* AppSettingsTests.swift */; };
 		2DF4043356AA999D199B35A8 /* ClockSampleBufferFeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */; };
 		2F0703F459B30693C825F607 /* ClockFrameRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */; };
+		2FC15E12BAF21F0595E3AB8F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EC16EF242EC5327CF17DDF9 /* SettingsView.swift */; };
 		44E2E81890FBD2ACEB6F6E9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB63AA08209DB6362061DB0 /* Assets.xcassets */; };
 		4B851B4AD9E77D11630F4BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B5C5566D6034E783AEFB2 /* ContentView.swift */; };
 		4C36DF34F25A8E745F9A80FC /* PiPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5907F47C96C4AD4010DB31 /* PiPController.swift */; };
 		4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */; };
 		531BD69A8291059BD0488444 /* SampleBufferPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */; };
 		7805EB31E2F0CCC9B6A7FD82 /* ClockSampleBufferFeeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */; };
+		8A04D3D704E4BBEF5E05CFF7 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC6ED0595A5173739F05779 /* AppSettings.swift */; };
+		8B022B47C5CB5A655F73089F /* ClockFrameStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFC957DD501AEE76F68911C /* ClockFrameStyle.swift */; };
+		A37F9A888BCCC8FFE94AB6F6 /* ClockFrameStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0350787579D229FE5AE7CB8 /* ClockFrameStyleTests.swift */; };
 		B00893A69A5DC157079CAA60 /* SampleBufferFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */; };
 		C3CB36AA110BC7DEC0968C6E /* AudioSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220ED6924DB7D2B3DF030C98 /* AudioSessionController.swift */; };
 		C5247AC26B4BC0C492C5DF35 /* ClockFrameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */; };
@@ -23,6 +28,7 @@
 		D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009801003027307701B3EFF /* SampleBufferFactory.swift */; };
 		D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */; };
 		E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */; };
+		FC9D8ACD32FA781B257E9203 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C221ABA43CCDCA4563B13 /* RootView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,16 +43,22 @@
 
 /* Begin PBXFileReference section */
 		15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFrameRenderer.swift; sourceTree = "<group>"; };
+		188C221ABA43CCDCA4563B13 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1EC6ED0595A5173739F05779 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		220ED6924DB7D2B3DF030C98 /* AudioSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionController.swift; sourceTree = "<group>"; };
 		35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFrameRendererTests.swift; sourceTree = "<group>"; };
+		3EC16EF242EC5327CF17DDF9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipAwakeApp.swift; sourceTree = "<group>"; };
 		7009801003027307701B3EFF /* SampleBufferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactory.swift; sourceTree = "<group>"; };
 		791CC144DFC5BC7FB3FC8EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatter.swift; sourceTree = "<group>"; };
 		8BB63AA08209DB6362061DB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8BFC957DD501AEE76F68911C /* ClockFrameStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFrameStyle.swift; sourceTree = "<group>"; };
+		8FAD1EFCC968639709B53367 /* AppSettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsTests.swift; sourceTree = "<group>"; };
 		9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSampleBufferFeeder.swift; sourceTree = "<group>"; };
 		9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatterTests.swift; sourceTree = "<group>"; };
 		9E5907F47C96C4AD4010DB31 /* PiPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPController.swift; sourceTree = "<group>"; };
+		A0350787579D229FE5AE7CB8 /* ClockFrameStyleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFrameStyleTests.swift; sourceTree = "<group>"; };
 		B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSampleBufferFeederTests.swift; sourceTree = "<group>"; };
 		B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactoryTests.swift; sourceTree = "<group>"; };
 		B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferPlaybackDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +73,9 @@
 		05F434D7A8D9601B79EEE351 /* PipAwakeTests */ = {
 			isa = PBXGroup;
 			children = (
+				8FAD1EFCC968639709B53367 /* AppSettingsTests.swift */,
 				35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */,
+				A0350787579D229FE5AE7CB8 /* ClockFrameStyleTests.swift */,
 				B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */,
 				9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */,
 				B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */,
@@ -72,9 +86,11 @@
 		10C3DC6025A38FE9FBB56798 /* PipAwake */ = {
 			isa = PBXGroup;
 			children = (
+				1EC6ED0595A5173739F05779 /* AppSettings.swift */,
 				8BB63AA08209DB6362061DB0 /* Assets.xcassets */,
 				220ED6924DB7D2B3DF030C98 /* AudioSessionController.swift */,
 				15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */,
+				8BFC957DD501AEE76F68911C /* ClockFrameStyle.swift */,
 				BD32BE561240D2B3804F454D /* ClockFrameView.swift */,
 				9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */,
 				DB2B5C5566D6034E783AEFB2 /* ContentView.swift */,
@@ -82,9 +98,11 @@
 				791CC144DFC5BC7FB3FC8EDA /* Info.plist */,
 				5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */,
 				9E5907F47C96C4AD4010DB31 /* PiPController.swift */,
+				188C221ABA43CCDCA4563B13 /* RootView.swift */,
 				7009801003027307701B3EFF /* SampleBufferFactory.swift */,
 				B7D754774F2D67C572CA0A96 /* SampleBufferLayerView.swift */,
 				B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */,
+				3EC16EF242EC5327CF17DDF9 /* SettingsView.swift */,
 			);
 			path = PipAwake;
 			sourceTree = "<group>";
@@ -201,7 +219,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D6719E4D994A6B8E1AAF0BB /* AppSettingsTests.swift in Sources */,
 				2F0703F459B30693C825F607 /* ClockFrameRendererTests.swift in Sources */,
+				A37F9A888BCCC8FFE94AB6F6 /* ClockFrameStyleTests.swift in Sources */,
 				2DF4043356AA999D199B35A8 /* ClockSampleBufferFeederTests.swift in Sources */,
 				E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */,
 				B00893A69A5DC157079CAA60 /* SampleBufferFactoryTests.swift in Sources */,
@@ -212,17 +232,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A04D3D704E4BBEF5E05CFF7 /* AppSettings.swift in Sources */,
 				C3CB36AA110BC7DEC0968C6E /* AudioSessionController.swift in Sources */,
 				C5247AC26B4BC0C492C5DF35 /* ClockFrameRenderer.swift in Sources */,
+				8B022B47C5CB5A655F73089F /* ClockFrameStyle.swift in Sources */,
 				C641E88460A04E9529E8415F /* ClockFrameView.swift in Sources */,
 				7805EB31E2F0CCC9B6A7FD82 /* ClockSampleBufferFeeder.swift in Sources */,
 				4B851B4AD9E77D11630F4BAA /* ContentView.swift in Sources */,
 				D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */,
 				4C36DF34F25A8E745F9A80FC /* PiPController.swift in Sources */,
 				4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */,
+				FC9D8ACD32FA781B257E9203 /* RootView.swift in Sources */,
 				D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */,
 				D02AEDF3011BFAA0183C09D8 /* SampleBufferLayerView.swift in Sources */,
 				531BD69A8291059BD0488444 /* SampleBufferPlaybackDelegate.swift in Sources */,
+				2FC15E12BAF21F0595E3AB8F /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

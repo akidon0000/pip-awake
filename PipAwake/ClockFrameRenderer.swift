@@ -8,12 +8,10 @@ struct ClockFrame: Equatable {
 
 @MainActor
 struct ClockFrameRenderer {
-    // 横長の帯。ビットマップの解像度だけを決め、PiP 窓の実際の幅は系が比率から決める
-    static let width = 640
-    static let height = 50
-
-    func render(_ frame: ClockFrame) -> CVPixelBuffer? {
-        guard let image = makeImage(frame), let buffer = makePixelBuffer() else {
+    /// 1 フレームを BGRA の CVPixelBuffer にする。大きさは style の横幅と高さに従う
+    func render(_ frame: ClockFrame, style: ClockFrameStyle) -> CVPixelBuffer? {
+        guard let image = makeImage(frame, style: style), let buffer = makePixelBuffer(style: style)
+        else {
             return nil
         }
         CVPixelBufferLockBaseAddress(buffer, [])
@@ -21,8 +19,8 @@ struct ClockFrameRenderer {
         guard
             let context = CGContext(
                 data: CVPixelBufferGetBaseAddress(buffer),
-                width: Self.width,
-                height: Self.height,
+                width: style.width,
+                height: style.height,
                 bitsPerComponent: 8,
                 bytesPerRow: CVPixelBufferGetBytesPerRow(buffer),
                 space: CGColorSpaceCreateDeviceRGB(),
@@ -32,22 +30,22 @@ struct ClockFrameRenderer {
         else {
             return nil
         }
-        context.draw(image, in: CGRect(x: 0, y: 0, width: Self.width, height: Self.height))
+        context.draw(image, in: CGRect(x: 0, y: 0, width: style.width, height: style.height))
         return buffer
     }
 
     /// SwiftUI のビューを 1 倍で画像にする。レイアウトは HStack に任せる
-    private func makeImage(_ frame: ClockFrame) -> CGImage? {
-        let renderer = ImageRenderer(content: ClockFrameView(frame: frame))
+    private func makeImage(_ frame: ClockFrame, style: ClockFrameStyle) -> CGImage? {
+        let renderer = ImageRenderer(content: ClockFrameView(frame: frame, style: style))
         renderer.proposedSize = ProposedViewSize(
-            width: CGFloat(Self.width),
-            height: CGFloat(Self.height)
+            width: CGFloat(style.width),
+            height: CGFloat(style.height)
         )
         renderer.scale = 1
         return renderer.cgImage
     }
 
-    private func makePixelBuffer() -> CVPixelBuffer? {
+    private func makePixelBuffer(style: ClockFrameStyle) -> CVPixelBuffer? {
         let attributes: [CFString: Any] = [
             kCVPixelBufferCGImageCompatibilityKey: true,
             kCVPixelBufferCGBitmapContextCompatibilityKey: true,
@@ -56,8 +54,8 @@ struct ClockFrameRenderer {
         var buffer: CVPixelBuffer?
         let status = CVPixelBufferCreate(
             kCFAllocatorDefault,
-            Self.width,
-            Self.height,
+            style.width,
+            style.height,
             kCVPixelFormatType_32BGRA,
             attributes as CFDictionary,
             &buffer

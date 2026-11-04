@@ -2,6 +2,7 @@ import SwiftUI
 
 @main
 struct PipAwakeApp: App {
+    private let settings = AppSettings()
     private let feeder = ClockSampleBufferFeeder()
     private let pip: PiPController
     private let audio = AudioSessionController()
@@ -12,7 +13,7 @@ struct PipAwakeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(feeder: feeder, pip: pip, audio: audio)
+            RootView(settings: settings, feeder: feeder, pip: pip, audio: audio)
         }
     }
 }
