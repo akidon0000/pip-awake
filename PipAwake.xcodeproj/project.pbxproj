@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2DF4043356AA999D199B35A8 /* ClockSampleBufferFeederTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */; };
 		2F0703F459B30693C825F607 /* ClockFrameRendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */; };
+		4B851B4AD9E77D11630F4BAA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2B5C5566D6034E783AEFB2 /* ContentView.swift */; };
 		4C36DF34F25A8E745F9A80FC /* PiPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5907F47C96C4AD4010DB31 /* PiPController.swift */; };
 		4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */; };
 		531BD69A8291059BD0488444 /* SampleBufferPlaybackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */; };
@@ -18,6 +19,7 @@
 		B00893A69A5DC157079CAA60 /* SampleBufferFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */; };
 		C3CB36AA110BC7DEC0968C6E /* AudioSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220ED6924DB7D2B3DF030C98 /* AudioSessionController.swift */; };
 		C5247AC26B4BC0C492C5DF35 /* ClockFrameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */; };
+		D02AEDF3011BFAA0183C09D8 /* SampleBufferLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D754774F2D67C572CA0A96 /* SampleBufferLayerView.swift */; };
 		D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009801003027307701B3EFF /* SampleBufferFactory.swift */; };
 		D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */; };
 		E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */; };
@@ -48,8 +50,10 @@
 		B0DE7F38A1A277DD62B2DBD4 /* ClockSampleBufferFeederTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSampleBufferFeederTests.swift; sourceTree = "<group>"; };
 		B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactoryTests.swift; sourceTree = "<group>"; };
 		B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferPlaybackDelegate.swift; sourceTree = "<group>"; };
+		B7D754774F2D67C572CA0A96 /* SampleBufferLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferLayerView.swift; sourceTree = "<group>"; };
 		D4FD68EB84237F3291F1F792 /* ClockText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockText.swift; sourceTree = "<group>"; };
 		D7FC9DE63437DDE146F96099 /* PipAwakeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PipAwakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2B5C5566D6034E783AEFB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECF90C63BCC32FC35E30E9B5 /* PipAwake.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PipAwake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -73,11 +77,13 @@
 				15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */,
 				9A508805D0B6AD706B50D596 /* ClockSampleBufferFeeder.swift */,
 				D4FD68EB84237F3291F1F792 /* ClockText.swift */,
+				DB2B5C5566D6034E783AEFB2 /* ContentView.swift */,
 				7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */,
 				791CC144DFC5BC7FB3FC8EDA /* Info.plist */,
 				5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */,
 				9E5907F47C96C4AD4010DB31 /* PiPController.swift */,
 				7009801003027307701B3EFF /* SampleBufferFactory.swift */,
+				B7D754774F2D67C572CA0A96 /* SampleBufferLayerView.swift */,
 				B535E84CD3757BF63707C486 /* SampleBufferPlaybackDelegate.swift */,
 			);
 			path = PipAwake;
@@ -199,10 +205,12 @@
 				C5247AC26B4BC0C492C5DF35 /* ClockFrameRenderer.swift in Sources */,
 				7805EB31E2F0CCC9B6A7FD82 /* ClockSampleBufferFeeder.swift in Sources */,
 				A3B7F08A0CF7E3196947627C /* ClockText.swift in Sources */,
+				4B851B4AD9E77D11630F4BAA /* ContentView.swift in Sources */,
 				D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */,
 				4C36DF34F25A8E745F9A80FC /* PiPController.swift in Sources */,
 				4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */,
 				D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */,
+				D02AEDF3011BFAA0183C09D8 /* SampleBufferLayerView.swift in Sources */,
 				531BD69A8291059BD0488444 /* SampleBufferPlaybackDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
