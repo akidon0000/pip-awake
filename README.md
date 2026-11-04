@@ -16,30 +16,43 @@ iPhone の画面を点けたままにするための iOS アプリです。PiP�
 
 - 給電状態の検知は未実装です。「給電中」は常に表示されます。
 - 実機での長時間の動作と、画面を点けたままにする効果は未確認です。
-- ipa のインストール手順は未確認です。下の手順は Sideloadly と AltStore の一般的な使い方に基づきます。
+- 下の手順で他の人が自分の iPhone に入れる作業は、まだ試していません。
 
-## インストール（ipa）
+## インストール
 
-配布する ipa は未署名です。インストールする人が自分の Apple ID で署名します。
+このアプリは ipa では配布していません。Xcode でソースからビルドして、自分の iPhone に直接入れます。
 
-1. 公開サイトから `PipAwake.ipa` を取得する。
-2. Sideloadly か AltStore で iPhone に入れる。このとき自分の Apple ID で署名される。
-3. iPhone で 設定 > 一般 > VPN とデバイス管理 を開き、開発元を信頼する。
-4. 無料の Apple ID で署名した場合、約 7 日で期限が切れる。期限が切れたら入れ直す。
+必要なもの
 
-## ソースからビルドする
+- Mac（Xcode がインストールされていること）
+- iPhone（iOS 17 以上）
+- Apple ID（無料のもので可）
 
-必要なもの: Xcode と [XcodeGen](https://github.com/yonaskolb/XcodeGen)
+手順
 
-```bash
-brew install xcodegen
-xcodegen generate
-open PipAwake.xcodeproj
-```
+1. リポジトリを取得して、プロジェクトを開きます。
 
-- `project.yml` の `DEVELOPMENT_TEAM` を自分の Team ID に変えてから実機で動かす。
-- 未署名の ipa を作るには `scripts/build-unsigned-ipa.sh <出力ディレクトリ>` を実行する。
-- テストは iOS Simulator で実行する。
+   ```bash
+   git clone https://github.com/akidon0000/pip-awake.git
+   cd pip-awake
+   open PipAwake.xcodeproj
+   ```
+
+2. Xcode で Apple ID を追加します（Xcode > Settings > Accounts）。
+3. 左のナビゲータで PipAwake プロジェクトを選び、PipAwake ターゲットの Signing & Capabilities を開きます。Team で自分のチームを選びます。「Bundle Identifier が使えない」と出たら、`dev.akidon.pipawake` 以外の自分専用の値に変えます。
+4. iPhone を Mac につなぎ、実行先に iPhone を選んで ▶ を押します。
+5. 初回だけ、iPhone の 設定 > プライバシーとセキュリティ > デベロッパモード をオンにします（iOS 16 以上）。
+6. 初回だけ、iPhone の 設定 > 一般 > VPN とデバイス管理 で、自分の Apple ID の開発元を信頼します。
+7. 無料の Apple ID で署名した場合、約 7 日で期限が切れます。切れたら、手順 4 からやり直します。
+
+メモ
+
+- `project.yml` の `DEVELOPMENT_TEAM` は、このリポジトリ作者のチームが入っています。`xcodegen generate` を実行すると、その値に戻ります。戻ったあとは、手順 3 で Team を選び直してください。
+
+## 開発
+
+- ファイルを追加・削除したときは、`xcodegen generate` を実行します。XcodeGen は `brew install xcodegen` で入ります。
+- テストは iOS Simulator で実行します。
 
 ```bash
 xcodebuild test -project PipAwake.xcodeproj -scheme PipAwake \
