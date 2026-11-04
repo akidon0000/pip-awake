@@ -6,7 +6,7 @@ import Testing
 
 @MainActor
 struct ClockFrameRendererTests {
-    private let frame = ClockFrame(elapsed: 3725, isPluggedIn: true)
+    private let frame = ClockFrame(elapsed: 3725)
 
     @Test
     func rendersBGRAWithStandardSize() throws {
@@ -19,7 +19,7 @@ struct ClockFrameRendererTests {
 
     @Test
     func followsCustomWidthAndHeight() throws {
-        let style = ClockFrameStyle(width: 320, height: 120, showsPowerStatus: false)
+        let style = ClockFrameStyle(width: 320, height: 120)
         let rendered = ClockFrameRenderer().render(frame, style: style)
         let buffer = try #require(rendered)
         #expect(CVPixelBufferGetWidth(buffer) == 320)

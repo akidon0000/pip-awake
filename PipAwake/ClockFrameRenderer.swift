@@ -3,7 +3,6 @@ import SwiftUI
 
 struct ClockFrame: Equatable {
     var elapsed: TimeInterval
-    var isPluggedIn: Bool
 }
 
 @MainActor

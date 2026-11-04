@@ -6,18 +6,9 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
-                powerStatusSection
                 sizeSection
             }
             .navigationTitle("設定")
-        }
-    }
-
-    private var powerStatusSection: some View {
-        Section {
-            Toggle("給電状況を表示", isOn: $settings.showsPowerStatus)
-        } footer: {
-            Text("映像に「給電中」「未給電」の文字を出すかどうかを決めます。")
         }
     }
 

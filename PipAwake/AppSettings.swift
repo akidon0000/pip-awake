@@ -10,10 +10,6 @@ final class AppSettings {
     static let heightStep = 5
     static let widthStep = 20
 
-    var showsPowerStatus: Bool {
-        didSet { defaults.set(showsPowerStatus, forKey: Key.showsPowerStatus) }
-    }
-
     var frameHeight: Int {
         didSet { defaults.set(frameHeight, forKey: Key.frameHeight) }
     }
@@ -27,9 +23,6 @@ final class AppSettings {
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         let standard = ClockFrameStyle.standard
-        showsPowerStatus =
-            defaults.object(forKey: Key.showsPowerStatus) as? Bool
-            ?? standard.showsPowerStatus
         frameHeight = Self.clamp(
             defaults.object(forKey: Key.frameHeight) as? Int ?? standard.height,
             to: Self.heightRange
@@ -41,7 +34,7 @@ final class AppSettings {
     }
 
     var frameStyle: ClockFrameStyle {
-        ClockFrameStyle(width: frameWidth, height: frameHeight, showsPowerStatus: showsPowerStatus)
+        ClockFrameStyle(width: frameWidth, height: frameHeight)
     }
 
     func resetSize() {
@@ -54,7 +47,6 @@ final class AppSettings {
     }
 
     private enum Key {
-        static let showsPowerStatus = "showsPowerStatus"
         static let frameHeight = "frameHeight"
         static let frameWidth = "frameWidth"
     }

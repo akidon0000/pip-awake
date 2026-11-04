@@ -16,7 +16,6 @@ struct AppSettingsTests {
     @Test
     func usesStandardValuesWhenNothingIsSaved() throws {
         let settings = AppSettings(defaults: try makeDefaults())
-        #expect(settings.showsPowerStatus)
         #expect(settings.frameHeight == ClockFrameStyle.standard.height)
         #expect(settings.frameWidth == ClockFrameStyle.standard.width)
     }
@@ -25,12 +24,10 @@ struct AppSettingsTests {
     func restoresChangedValuesOnNextLaunch() throws {
         let defaults = try makeDefaults()
         let first = AppSettings(defaults: defaults)
-        first.showsPowerStatus = false
         first.frameHeight = 90
         first.frameWidth = 800
 
         let second = AppSettings(defaults: defaults)
-        #expect(!second.showsPowerStatus)
         #expect(second.frameHeight == 90)
         #expect(second.frameWidth == 800)
     }
@@ -62,10 +59,7 @@ struct AppSettingsTests {
         let settings = AppSettings(defaults: try makeDefaults())
         settings.frameWidth = 480
         settings.frameHeight = 60
-        settings.showsPowerStatus = false
 
-        #expect(
-            settings.frameStyle
-                == ClockFrameStyle(width: 480, height: 60, showsPowerStatus: false))
+        #expect(settings.frameStyle == ClockFrameStyle(width: 480, height: 60))
     }
 }

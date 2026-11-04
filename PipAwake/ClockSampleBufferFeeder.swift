@@ -11,9 +11,7 @@ protocol FrameFeeding: AnyObject {
 @MainActor
 final class ClockSampleBufferFeeder: FrameFeeding {
     let displayLayer = AVSampleBufferDisplayLayer()
-    /// 毎フレーム呼ぶ。給電状態の表示と、通知が届かない場合のポーリングを兼ねる
-    var isPluggedIn: () -> Bool = { true }
-    /// 次の start から使う映像の大きさと表示内容
+    /// 次の start から使う映像の大きさ
     var style = ClockFrameStyle.standard
 
     private let renderer = ClockFrameRenderer()
@@ -78,8 +76,6 @@ final class ClockSampleBufferFeeder: FrameFeeding {
 
     private func enqueueFrame() {
         let now = Date()
-        let isPluggedIn = isPluggedIn()
-        // isPluggedIn() の中で給電切れを検知して stop() が呼ばれることがある
         guard isRunning else {
             return
         }
@@ -87,10 +83,7 @@ final class ClockSampleBufferFeeder: FrameFeeding {
         if output.status == .failed || output.requiresFlushToResumeDecoding {
             output.flush()
         }
-        let frame = ClockFrame(
-            elapsed: now.timeIntervalSince(startedAt),
-            isPluggedIn: isPluggedIn
-        )
+        let frame = ClockFrame(elapsed: now.timeIntervalSince(startedAt))
         let time = timebase.time
         guard
             let pixelBuffer = renderer.render(frame, style: style),
