@@ -11,7 +11,9 @@
 		4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */; };
 		752D96692193E92A6D1F1588 /* ClockTextTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */; };
 		A3B7F08A0CF7E3196947627C /* ClockText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FD68EB84237F3291F1F792 /* ClockText.swift */; };
+		B00893A69A5DC157079CAA60 /* SampleBufferFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */; };
 		C5247AC26B4BC0C492C5DF35 /* ClockFrameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EA4F4769D0117C76A5DA2F /* ClockFrameRenderer.swift */; };
+		D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7009801003027307701B3EFF /* SampleBufferFactory.swift */; };
 		D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */; };
 		E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */; };
 /* End PBXBuildFile section */
@@ -31,9 +33,11 @@
 		35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockFrameRendererTests.swift; sourceTree = "<group>"; };
 		49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTextTests.swift; sourceTree = "<group>"; };
 		5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PipAwakeApp.swift; sourceTree = "<group>"; };
+		7009801003027307701B3EFF /* SampleBufferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactory.swift; sourceTree = "<group>"; };
 		791CC144DFC5BC7FB3FC8EDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatter.swift; sourceTree = "<group>"; };
 		9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedFormatterTests.swift; sourceTree = "<group>"; };
+		B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferFactoryTests.swift; sourceTree = "<group>"; };
 		D4FD68EB84237F3291F1F792 /* ClockText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockText.swift; sourceTree = "<group>"; };
 		D7FC9DE63437DDE146F96099 /* PipAwakeTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PipAwakeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECF90C63BCC32FC35E30E9B5 /* PipAwake.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = PipAwake.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +50,7 @@
 				35C173631910B31F9BF746B8 /* ClockFrameRendererTests.swift */,
 				49DDE95C3AC7D37EA37167BE /* ClockTextTests.swift */,
 				9D556FBA0AF1E0B9EDB94BBC /* ElapsedFormatterTests.swift */,
+				B3B33259623457736D3162EA /* SampleBufferFactoryTests.swift */,
 			);
 			path = PipAwakeTests;
 			sourceTree = "<group>";
@@ -58,6 +63,7 @@
 				7E6972126ED59AD70124B7CE /* ElapsedFormatter.swift */,
 				791CC144DFC5BC7FB3FC8EDA /* Info.plist */,
 				5EC0D0C7C3651230FB581D3D /* PipAwakeApp.swift */,
+				7009801003027307701B3EFF /* SampleBufferFactory.swift */,
 			);
 			path = PipAwake;
 			sourceTree = "<group>";
@@ -165,6 +171,7 @@
 				2F0703F459B30693C825F607 /* ClockFrameRendererTests.swift in Sources */,
 				752D96692193E92A6D1F1588 /* ClockTextTests.swift in Sources */,
 				E2BD4E1391D4583CA70F0C54 /* ElapsedFormatterTests.swift in Sources */,
+				B00893A69A5DC157079CAA60 /* SampleBufferFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +183,7 @@
 				A3B7F08A0CF7E3196947627C /* ClockText.swift in Sources */,
 				D3225CD15F57DF8E6376D94E /* ElapsedFormatter.swift in Sources */,
 				4EB42D972BD0D6E038F6D12C /* PipAwakeApp.swift in Sources */,
+				D0630BEEDADB2B5F430DBE56 /* SampleBufferFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
