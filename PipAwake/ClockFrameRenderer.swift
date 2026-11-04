@@ -2,16 +2,13 @@ import CoreVideo
 import UIKit
 
 struct ClockFrame: Equatable {
-    var now: Date
     var elapsed: TimeInterval
     var isPluggedIn: Bool
 }
 
 struct ClockFrameRenderer {
     static let width = 640
-    static let height = 360
-
-    var calendar: Calendar = .current
+    static let height = 180
 
     func render(_ frame: ClockFrame) -> CVPixelBuffer? {
         guard let buffer = makePixelBuffer() else {
@@ -68,17 +65,17 @@ struct ClockFrameRenderer {
         UIGraphicsPushContext(context)
         defer { UIGraphicsPopContext() }
         drawCentered(
-            ClockText.time(frame.now, calendar: calendar),
-            font: .monospacedDigitSystemFont(ofSize: 120, weight: .semibold),
+            ElapsedFormatter.string(from: frame.elapsed),
+            font: .monospacedDigitSystemFont(ofSize: 96, weight: .semibold),
             color: .white,
-            centerY: 160,
+            centerY: 74,
             width: width
         )
         drawCentered(
-            ClockText.subtitle(elapsed: frame.elapsed, isPluggedIn: frame.isPluggedIn),
-            font: .monospacedDigitSystemFont(ofSize: 30, weight: .regular),
-            color: .lightGray,
-            centerY: 290,
+            frame.isPluggedIn ? "給電中" : "未給電",
+            font: .systemFont(ofSize: 28, weight: .regular),
+            color: frame.isPluggedIn ? .lightGray : .systemRed,
+            centerY: 152,
             width: width
         )
     }

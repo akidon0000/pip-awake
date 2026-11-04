@@ -2,7 +2,7 @@
 
 - 読み手: このリポジトリで実装する自分・エージェント
 - 目的: 作るものの範囲・構成・状態遷移を固定し、実装計画（plans/）の根拠にする
-- 状態: 2026-11-04 起票。チャットで方式と設計の合意済み
+- 状態: 2026-11-04 起票。チャットで方式と設計の合意済み。2026-11-05 改訂: PiP 窓を経過時間と給電状況だけの 640×180 表示に変更（ユーザー指示）
 
 ## 何を作るか
 
@@ -54,7 +54,7 @@ MDM の自動ロックは会社のセキュリティポリシーなので、使�
 | 部品 | 役割 | 依存 |
 |---|---|---|
 | `ElapsedFormatter` | 経過秒を `H:MM:SS` に整形する純関数 | なし |
-| `ClockFrameRenderer` | 現在時刻・経過時間・給電状態から 640×360 の BGRA `CVPixelBuffer` を作る。副作用なし | CoreGraphics / CoreVideo |
+| `ClockFrameRenderer` | 経過時間・給電状態から 640×180 の BGRA `CVPixelBuffer` を作る。副作用なし | CoreGraphics / CoreVideo |
 | `ClockSampleBufferFeeder` | `AVSampleBufferDisplayLayer` と制御用タイムベースを持ち、1 秒ごとに renderer の出力を `CMSampleBuffer` にして enqueue。`start` / `pause` / `stop` | renderer |
 | `PiPController` | `AVPictureInPictureController(contentSource: .init(sampleBufferDisplayLayer:playbackDelegate:))` の開始・停止と delegate の中継 | feeder のレイヤー |
 | `PowerMonitor` | `UIDevice.batteryState` を監視し、給電中（`.charging` か `.full`）かを流す。シミュレータでは常に給電中 | UIKit |
@@ -108,12 +108,13 @@ stateDiagram-v2
   この場合は idle に落とさず running のままインライン表示で続ける（前面なのでスリープしない）。
   ホームに戻れば `canStartPictureInPictureAutomaticallyFromInline` で PiP に戻る。
   restore を経ずに `didStop` が来たら × で閉じたとみなして idle にする。
+- 給電が外れたら、PiP を閉じて供給を止め、状態を `stoppedByUnplug` にする。電源の変化通知で即座に検知し、通知が届かない場合は供給中の毎秒の確認で検知する（最大約 1 秒）。
 - 給電していないときに開始を押しても遷移しない（ボタン自体も無効にする）。
 - `AVPictureInPictureController.isPictureInPictureSupported()` が false の端末では開始できない旨を出す。
 
 ## PiP 窓の表示
 
-- 640×360、黒地。中央に現在時刻 `HH:mm:ss`（等幅数字）、下段に `経過 H:MM:SS ・ 給電中`
+- 640×180（横長）、黒地。上段に経過時間 `H:MM:SS` を大きく（等幅数字）、下段に給電状況（`給電中` は薄いグレー、`未給電` は赤）。現在時刻は表示しない
 - 1 fps。各フレームの PTS は制御用タイムベースの現在時刻にし、即時表示の attachment を付ける
 
 ## アプリ画面
@@ -122,7 +123,7 @@ stateDiagram-v2
 
 | 状態 | 文言 | ボタン |
 |---|---|---|
-| idle（給電中） | 開始すると PiP で時計を流し、画面を点けたままにします | 開始 |
+| idle（給電中） | 開始すると PiP で経過時間を流し、画面を点けたままにします | 開始 |
 | idle（未給電） | ケーブルをつないでください | 開始（無効） |
 | starting / running | 画面を点けたままにしています | 停止 |
 | paused | 一時停止中。この間は画面が消えます | 停止 |
@@ -134,7 +135,7 @@ stateDiagram-v2
 ユニットテスト（Swift Testing）:
 
 - `ElapsedFormatter`: 0 → `0:00:00`、3725 → `1:02:05`、36000 → `10:00:00`
-- `ClockFrameRenderer`: 出力が 640×360・`kCVPixelFormatType_32BGRA`
+- `ClockFrameRenderer`: 出力が 640×180・`kCVPixelFormatType_32BGRA`
 - `AwakeSession`（偽の部品で）: 上の状態遷移図の全矢印と、遷移ごとの副作用表の各列。
   未給電での開始が無視されること、restore 経由の `didStop` で running が保たれること
 

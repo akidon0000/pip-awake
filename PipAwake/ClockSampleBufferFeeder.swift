@@ -86,7 +86,6 @@ final class ClockSampleBufferFeeder: FrameFeeding {
             output.flush()
         }
         let frame = ClockFrame(
-            now: now,
             elapsed: now.timeIntervalSince(startedAt),
             isPluggedIn: isPluggedIn
         )

@@ -7,7 +7,7 @@ import Testing
 struct SampleBufferFactoryTests {
     @Test
     func wrapsPixelBufferWithPresentationTime() throws {
-        let frame = ClockFrame(now: Date(), elapsed: 0, isPluggedIn: true)
+        let frame = ClockFrame(elapsed: 0, isPluggedIn: true)
         let pixelBuffer = try #require(ClockFrameRenderer().render(frame))
         let time = CMTime(seconds: 42, preferredTimescale: 600)
 

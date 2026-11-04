@@ -5,17 +5,13 @@ import Testing
 @testable import PipAwake
 
 struct ClockFrameRendererTests {
-    private let frame = ClockFrame(
-        now: Date(timeIntervalSince1970: 0),
-        elapsed: 3725,
-        isPluggedIn: true
-    )
+    private let frame = ClockFrame(elapsed: 3725, isPluggedIn: true)
 
     @Test
-    func rendersBGRA640x360() throws {
+    func rendersBGRA640x180() throws {
         let buffer = try #require(ClockFrameRenderer().render(frame))
         #expect(CVPixelBufferGetWidth(buffer) == 640)
-        #expect(CVPixelBufferGetHeight(buffer) == 360)
+        #expect(CVPixelBufferGetHeight(buffer) == 180)
         #expect(CVPixelBufferGetPixelFormatType(buffer) == kCVPixelFormatType_32BGRA)
     }
 

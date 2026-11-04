@@ -10,7 +10,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 24) {
             SampleBufferLayerView(displayLayer: feeder.displayLayer)
-                .aspectRatio(16.0 / 9.0, contentMode: .fit)
+                .aspectRatio(640.0 / 180.0, contentMode: .fit)
                 .clipShape(.rect(cornerRadius: 12))
             Button(isRunning ? "停止" : "開始") {
                 if isRunning {
